@@ -55,10 +55,10 @@ http-prod définit NODE_ENV sur "production" sans utiliser cross-env.
 
 Les codes HTTP reçus par votre navigateur pour chacune des quatre pages précédentes sont : 
 
-/index.html : 200 OK 
-/random.html : 200 OK 
-/ : 200 OK 
-/dont-exist : 404 NOT FOUND 
+- /index.html : 200 OK 
+- /random.html : 200 OK 
+- / : 200 OK 
+- /dont-exist : 404 NOT FOUND 
 
 ```js
 async function requestListener(request, response) {
@@ -95,21 +95,34 @@ Les URL des documentations des modules installés sont :
 - loglevel : https://github.com/pimterry/loglevel 
 - morgan : https://github.com/expressjs/morgan 
 
-http://localhost:8000/ 
-http://localhost:8000/index.html 
-http://localhost:8000/random/5 (En remplaçant 5 par le nombre d'entiers souhaités) 
+- http://localhost:8000/ 
+- http://localhost:8000/index.html 
+- http://localhost:8000/random/5 (En remplaçant 5 par le nombre d'entiers souhaités) 
 
 **Question 2.2**: vérifier que les trois routes fonctionnent. 
 
 Les trois routes fonctionnent. 
  
-
 **Question 2.3** lister les en-têtes des réponses fournies par Express. Lesquelles sont nouvelles par rapport au serveur HTTP ? 
 
 Les en-têtes des réponses fournies par Express incluent des en-têtes supplémentaires tels que X-Powered-By, Date, Content-Type, Content-Length, etc. 
 
- 
+
 
 **Question 2.4** quand l’événement listening est-il déclenché ? 
 
 L'événement listening est déclenché lorsque le serveur commence à écouter les connexions. 
+
+**Question 2.6** visiter la page d'accueil puis rafraichir (Ctrl+R) et _ensuite_ **forcer** le rafraichissement (Ctrl+Shift+R). Quels sont les codes HTTP sur le fichier `style.css` ? Justifier.
+
+Lorsque vous visitez la page d'accueil et que vous rafraîchissez (Ctrl+R), le code HTTP pour le fichier style.css est généralement 304 Not Modified, car le navigateur utilise sa copie en cache.
+
+### Rendu avec EJS
+
+
+### Gestion d'erreurs
+**Question 2.7** vérifier que l'affichage change bien entre le mode _production_ et le mode _development_.
+
+ L'affichage change entre le mode production et le mode développement en fonction du paramètre app.get("env"). En mode développement, les détails de l'erreur sont affichés, tandis qu'en mode production, seuls le code d'erreur et le message sont affichés.
+
+ 
